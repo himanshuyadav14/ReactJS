@@ -15,7 +15,7 @@ compatible with older version of browsers
 const heading = React.createElement(
   "h1", //Element Type
   { id: "title" }, //Props Object ==>> Like in html we will give id and class. So here in react we give those props here
-  "Hi, My name is Himanshu Yadav" //Children
+  "Hi, My name is Himanshu Yadav" //Children //Children
 );
 console.log(heading);
 

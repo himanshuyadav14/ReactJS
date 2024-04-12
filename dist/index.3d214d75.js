@@ -2960,7 +2960,7 @@ compatible with older version of browsers
 
 */ const heading = React.createElement("h1", {
     id: "title"
-}, "Hi, My name is Himanshu Yadav" //Children
+}, "Hi, My name is Himanshu Yadav" //Children //Children
 );
 console.log(heading);
 const heading2 = React.createElement("h2", {
