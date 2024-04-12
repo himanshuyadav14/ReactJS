@@ -2951,8 +2951,13 @@ File Watcher Algorithms - C++
 BUNDLING
 MINIFY
 Cleaning our code
-It manages dev and production built
+Manages dev and production built
 Superfast build algorithms
+Image Optimization also
+Caching while development
+compression
+compatible with older version of browsers
+
 */ const heading = React.createElement("h1", {
     id: "title"
 }, "Hi, My name is Himanshu Yadav" //Children
