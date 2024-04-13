@@ -52,21 +52,49 @@ Zero Config
 // //   passing a react element in root
 // root.render(container);
 
-import  React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 //JSX?==>   React.createElement()  ==> Object ==> HTML(DOM)
 
 // is JSX HTML inside js.....
-const heading = (
-  <h1 id="title" key="h2" classname="">
+const Title = () => (
+  <h1 id="title" key="h2" className="">
     Namaste React
   </h1>
 );
 
 //Component
-// - Functional Component - NEW
-// - Class Based Component - OLD
+// - Functional Component - NEW  ==> We will use this most of the time
+// It is nothing but just a javascript function
+//Name of the component Starts with Capital Letter
+
+// const data = api.getData();
+
+//If our api gets us malicious data then JSX santizes it. 
+//Read about sanitization
+
+//Component composition ==> If we use a component inside a component its called component composition
+const HeaderComponent = () => {
+  //returning just a Peice of JSX or returning a create element
+  // return <h1>Namaste React Functional Component</h1>
+  return (
+    <div>
+      {/* {data} */}
+      {/* {heading} */}
+      <Title/>
+      <h1>Namaste</h1>
+      <h1>tag</h1>
+    </div>
+  );
+};
+
+//This is also a valid syntax without return
+// const HeaderComponent2 = () => (
+//   <div></div>
+// )
+
+// - Class Based Component - OLD ==> We cover this also
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(heading);
+root.render(<HeaderComponent/>);
