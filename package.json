@@ -1,7 +1,7 @@
 {
   "name": "reactjs",
   "version": "1.0.0",
-  "description": "This is a Namaste React Course",
+  "description": "This is a Namaste react course",
   "scripts": {
     "test": "jest"
   },

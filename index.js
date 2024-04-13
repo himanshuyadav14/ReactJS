@@ -1,5 +1,6 @@
 /*
-Parcel has -> Hot Module Reloading (HMR)
+Created a server for
+Parcel has -> Hot Module Replacement (HMR)
 File Watcher Algorithms - C++
 BUNDLING
 MINIFY
@@ -10,8 +11,13 @@ Image Optimization also
 Caching while development
 compression
 compatible with older version of browsers
-
+HTTPS on development
+Manages port number also
+Consistent Hashing Algorithms
+Zero Config
 */
+import React from "react";
+import ReactDOM from "react-dom/client";
 const heading = React.createElement(
   "h1", //Element Type
   { id: "title" }, //Props Object ==>> Like in html we will give id and class. So here in react we give those props here
