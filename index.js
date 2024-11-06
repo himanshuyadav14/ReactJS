@@ -43,6 +43,8 @@ const container = React.createElement("div", { id: "container" }, [
   heading2,
   heading3,
 ]);
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //   passing a react element in root
