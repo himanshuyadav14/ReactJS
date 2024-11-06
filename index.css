@@ -1,3 +1,20 @@
-#root{
-    background-color: beige;
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.nav-items > ul{
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-items > ul > li{
+    padding: 20px;
+}
+
+.logo{
+    width: 150px;
 }
