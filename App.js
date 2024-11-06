@@ -27,18 +27,69 @@ const HeaderComponent = () => {
   );
 };
 
-const BodyComponent = () =>{
-  return (
-    <h4>Body</h4>
-  );
-}
+//config driven ui
+const restaurantList = [
+  {
+    name: "Burger King",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
+    cuisines: ["Pizza", "American"],
+    rating: "4.2",
+  },
+  {
+    name: "Burger King",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
+    cuisines: ["Pizza", "American"],
+    rating: "4.2",
+  },
+  {
+    name: "Burger King",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
+    cuisines: ["Pizza", "American"],
+    rating: "4.2",
+  },
+  {
+    name: "Burger King",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
+    cuisines: ["Pizza", "American"],
+    rating: "4.2",
+  },
+  {
+    name: "Burger King",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
+    cuisines: ["Pizza", "American"],
+    rating: "4.2",
+  },
+];
 
-
-const FooterComponent = () =>{
+const RestaurantCard = ({ restaurant }) => {
   return (
-    <h4>Footer</h4>
+    <div className="card">
+      <img src={restaurant.image} alt="" />
+      <h2>{restaurant.name}</h2>
+      <h3>{restaurant.cuisines.join(", ")}</h3>
+      <h4>{restaurant.rating} stars</h4>
+    </div>
   );
-}
+};
+
+const BodyComponent = () => {
+  return (
+    <div className="restaurant-list">
+      {restaurantList.map((restaurant, index) => (
+        <RestaurantCard key = {index} restaurant={restaurant} />
+      ))}
+    </div>
+  );
+};
+
+const FooterComponent = () => {
+  return <h4>Footer</h4>;
+};
 
 //React.Fragment
 const AppLayout = () => {
