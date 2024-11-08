@@ -1,3 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -33,4 +38,21 @@
 .restaurant-list{
     display: flex;
     flex-wrap: wrap; 
+}
+
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input{
+    width: 300px;
+    height: 30px;
+}
+
+.search-btn{
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
 }
