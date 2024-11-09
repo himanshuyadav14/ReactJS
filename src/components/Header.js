@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { LOGO_URL } from "/src/config";
+// import Logo from "../assets/img/logo.jpg";
+import { Link } from "react-router-dom";
 
 // const loggedinUser = () => {
 //   //API Call to authentication
@@ -12,6 +14,9 @@ const Title = () => (
   </a>
 );
 
+//SPA :- Single Page Application
+//Client side routing
+
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -20,10 +25,13 @@ const Header = () => {
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+          <Link to="/">Home</Link>
+
+          <Link to="/about">About</Link>
+
+          <Link to="/Contact">Contact</Link>
+
+          <Link>Cart</Link>
         </ul>
       </div>
       <div className="auth-btn">
