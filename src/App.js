@@ -7,49 +7,55 @@ import About from "../src/components/About";
 import Error from "../src/components/Error";
 import Contact from "../src/components/Contact";
 import RestaurantDetail from "../src/components/RestaurantDetail";
+import Profile from "../src/components/ProfileClass";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+// Layout Component
 const AppLayout = () => {
   return (
     <>
       <Header />
-      {/* <About /> //If path is /about
-      <Body /> //If path is /
-      <Contact /> //If path is /about */}
-      {/* Outlet */}
+      {/* This will render based on the path, Outlet acts as a placeholder for child routes */}
       <Outlet />
       <Footer />
     </>
   );
 };
 
+// Router Configuration
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />,
+    element: <AppLayout />, // Layout for the main app
+    errorElement: <Error />, // Error page if route is not found
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <Body />, // Body for the root path
       },
       {
         path: "/about",
-        element: <About />,
+        element: <About />, // About page
+        children: [
+          {
+            path: "profile", // This corresponds to /about/profile
+            element: <Profile />, // Nested profile page
+          },
+        ],
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: <Contact />, // Contact page
       },
       {
-        path: "/restaurant/:id",
-        element: <RestaurantDetail />,
+        path: "/restaurant/:id", // Dynamic route for restaurant details
+        element: <RestaurantDetail />, 
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root")); //index.html se attach krdo
-
-root.render(<RouterProvider router={appRouter} />); //app router ko attach krdo routerprovider ki help se
+// Attach the router to the root DOM element
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
