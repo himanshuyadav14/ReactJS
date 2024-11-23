@@ -40,7 +40,7 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: "profile", // This corresponds to /about/profile
-            element: <Profile />, // Nested profile page
+            element: <Profile name={"Himanshu"} xyz={"uii"} />, // Nested profile page
           },
         ],
       },
