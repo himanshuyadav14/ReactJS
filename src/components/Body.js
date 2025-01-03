@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { restaurantList } from "/src/config";
 import { RestaurantCard } from "../components/Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filteredData } from "../utils/helper";
-
-//What is state?
-//What is Hooks?
-//What is useState?
-//What is useEffect?
-//How do we handle errors in this?
+import useOnline from "../utils/useOnline"
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchText, setSearchText] = useState(""); //To create state variables
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     getRestaurants();
@@ -34,9 +28,9 @@ const Body = () => {
     setFilteredRestaurants(restaurants || []);
   }
 
-  const offline = useOnline();
-  
-  if (offline) {
+  const isOnline = useOnline();
+
+  if (!isOnline) {
     return <h1> 🔴 Offline, please check your internet connection!!</h1>;
   }
 
@@ -45,12 +39,6 @@ const Body = () => {
     setFilteredRestaurants(data);
   };
 
-  //Conditional rendering
-  //if restaurant is empty then load shimmer UI
-  //if my restaurant has data then load actual data UI
-  //if my all restro is not there
-
-  //Early return (Not render component)
   if (!allRestaurants) return null;
 
   return allRestaurants?.length === 0 ? (
