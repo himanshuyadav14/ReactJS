@@ -1,47 +1,10 @@
 export const LOGO_URL =
   "https://imgs.search.brave.com/E10RA5dlJM5h842ljpWWr6UpNInvofb9gmJkV_IK2I4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tYXJr/ZXRwbGFjZS5jYW52/YS5jb20vRUFFNURF/LS1Ta3cvMS8wLzE2/MDB3L2NhbnZhLXdo/aXRlLW9yYW5nZS1z/aW1wbGUtaG9tZW1h/ZGUtcHJlbWl1bS1x/dWFsaXR5LXJlc3Rh/dXJhbnQtb24tbG9n/by10ZW1wbGF0ZXMt/RTlVUmZfeTJzMTAu/anBn";
 
-// export const restaurantList = [
-//   {
-//     name: "Burger King",
-//     image:
-//       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//     cuisines: ["Pizza", "American"],
-//     rating: "4.2",
-//   },
-//   {
-//     name: "Burger King",
-//     image:
-//       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//     cuisines: ["Pizza", "American"],
-//     rating: "4.2",
-//   },
-//   {
-//     name: "Burger King",
-//     image:
-//       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//     cuisines: ["Pizza", "American"],
-//     rating: "4.2",
-//   },
-//   {
-//     name: "Burger King",
-//     image:
-//       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//     cuisines: ["Pizza", "American"],
-//     rating: "4.2",
-//   },
-//   {
-//     name: "Burger King",
-//     image:
-//       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//     cuisines: ["Pizza", "American"],
-//     rating: "4.2",
-//   },
-// ];
-
 export const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
+export const FETCH_MENU_URL =  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.95250&lng=75.71050&restaurantId="
 
   export const restaurantList = [
   {

@@ -3,18 +3,13 @@ import React, { useState, useEffect } from "react";
 import { RestaurantCard } from "../components/Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filteredData } from "../utils/helper";
 
 //What is state?
 //What is Hooks?
 //What is useState?
 //What is useEffect?
 //How do we handle errors in this?
-
-function filteredData(searchText, restaurants) {
-  return restaurants.filter((restaurant) =>
-    restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-}
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -37,6 +32,12 @@ const Body = () => {
 
     setAllRestaurants(restaurants || []);
     setFilteredRestaurants(restaurants || []);
+  }
+
+  const offline = useOnline();
+  
+  if (offline) {
+    return <h1> 🔴 Offline, please check your internet connection!!</h1>;
   }
 
   const handleSearch = () => {
