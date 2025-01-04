@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { LOGO_URL } from "/src/config";
-// import Logo from "../assets/img/logo.jpg";
 import { Link } from "react-router-dom";
-
-// const loggedinUser = () => {
-//   //API Call to authentication
-//   return false;
-// };
 
 const Title = () => (
   <a href="/">
     <img src={LOGO_URL} alt="" className="logo" />
   </a>
 );
-
-//SPA :- Single Page Application
-//Client side routing
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +21,8 @@ const Header = () => {
           <Link to="/about">About</Link>
 
           <Link to="/Contact">Contact</Link>
+
+          <Link to="/instamart">Instamart</Link>
 
           <Link>Cart</Link>
         </ul>
