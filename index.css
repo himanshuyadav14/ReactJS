@@ -1,3 +1,74 @@
-#root{
-    background-color: beige;
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.nav-items>ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-items>ul>Link {
+    padding: 20px;
+
+}
+
+.logo {
+    width: 150px;
+}
+
+.card {
+    width: 300px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.card>img {
+    width: 100%;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 300px;
+    height: 30px;
+}
+
+.search-btn {
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.shimmer-card {
+    width: 300px;
+    height: 400px;
+    background: lightgray;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.restaurant-menu{
+    display: flex;
+    
 }
