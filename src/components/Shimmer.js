@@ -2,12 +2,15 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className="restaurant-list">
-      {Array(10)
+    <div className="restaurant-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+      {Array(20)
         .fill("")
-        .map((e, index) => {
-          return <div key={index} className="shimmer-card"></div>;
-        })}
+        .map((_, index) => (
+          <div
+            key={index}
+            className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse rounded-lg h-48"
+          ></div>
+        ))}
     </div>
   );
 };
