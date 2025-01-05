@@ -11,6 +11,7 @@ const Title = () => (
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the side menu
 
   return (
     <header className="bg-gray-100 shadow-md sticky top-0 z-50">
@@ -18,8 +19,8 @@ const Header = () => {
         {/* Logo */}
         <Title />
 
-        {/* Navigation */}
-        <nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex">
           <ul className="flex space-x-6 text-gray-700 font-medium">
             <li>
               <Link to="/" className="hover:text-blue-600 transition">Home</Link>
@@ -40,7 +41,7 @@ const Header = () => {
         </nav>
 
         {/* Authentication Button */}
-        <div>
+        <div className="hidden md:block">
           {isLoggedIn ? (
             <button
               onClick={() => setIsLoggedIn(false)}
@@ -57,7 +58,121 @@ const Header = () => {
             </button>
           )}
         </div>
+
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden flex items-center">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* Side Menu (Mobile View) */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-40">
+          <div className="absolute left-0 top-0 w-64 bg-white h-full shadow-lg z-50 transform transition-all duration-300 ease-in-out">
+            <div className="flex justify-between items-center p-4 border-b">
+              <Title />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="text-gray-700 hover:text-gray-900"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <ul className="space-y-6 px-4 py-4">
+              <li>
+                <Link
+                  to="/"
+                  className="block text-gray-700 font-medium hover:text-blue-600 transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="block text-gray-700 font-medium hover:text-blue-600 transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="block text-gray-700 font-medium hover:text-blue-600 transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/instamart"
+                  className="block text-blue-600 font-bold hover:underline transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  GroceryHub
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cart"
+                  className="block text-gray-700 font-medium hover:text-blue-600 transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Cart
+                </Link>
+              </li>
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => setIsLoggedIn(false)}
+                    className="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setIsLoggedIn(true)}
+                    className="bg-green-600 text-white w-full py-2 rounded hover:bg-green-700 transition"
+                  >
+                    Login
+                  </button>
+                )}
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
