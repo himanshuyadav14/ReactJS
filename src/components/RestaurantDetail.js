@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { CDN_URL } from "../config";
 import Shimmer from "../components/Shimmer";
-import useRestaurant from "../utils/useRestaurant"
+import useRestaurant from "../utils/useRestaurant";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
@@ -11,22 +11,49 @@ const RestaurantDetail = () => {
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="restaurant-menu">
-      <div>
-        <h1>Restaurant id : {id}</h1>
-        <h2>{restaurant?.info?.name}</h2>
-        <img src={CDN_URL + restaurant?.info?.cloudinaryImageId} alt="" />
-        <h3>{restaurant?.info?.area}</h3>
-        <h3>{restaurant?.info?.city}</h3>
-        <h3>{restaurant?.info?.avgRating}</h3>
-        <h3>{restaurant?.info?.costForTwo}</h3>
+    <div className="container mx-auto px-4 py-8">
+      {/* Restaurant Info */}
+      <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
+        <div className="flex flex-col md:flex-row items-center">
+          {/* Restaurant Image */}
+          <img
+            src={CDN_URL + restaurant?.info?.cloudinaryImageId}
+            alt={restaurant?.info?.name}
+            className="w-full md:w-1/3 h-64 object-cover"
+          />
+          {/* Restaurant Details */}
+          <div className="p-6 md:pl-10">
+            <h1 className="text-2xl font-bold text-gray-800 mb-2">
+              {restaurant?.info?.name}
+            </h1>
+            <p className="text-gray-600 mb-2">
+              <strong>Area:</strong> {restaurant?.info?.area}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <strong>City:</strong> {restaurant?.info?.city}
+            </p>
+            <p className="text-gray-600 mb-2">
+              <strong>Rating:</strong> ⭐ {restaurant?.info?.avgRating || "N/A"}
+            </p>
+            <p className="text-gray-600">
+              <strong>Cost for Two:</strong> ₹{restaurant?.info?.costForTwo || "N/A"}
+            </p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h1>Menu</h1>
-        <ul>
-          {restaurant?.menu?.map((item) => {
-            return <li>{item}</li>;
-          })}
+
+      {/* Menu */}
+      <div className="bg-gray-50 shadow-md rounded-lg p-6">
+        <h1 className="text-xl font-semibold text-gray-800 mb-4">Menu</h1>
+        <ul className="space-y-2">
+          {restaurant?.menu?.map((item, index) => (
+            <li
+              key={index}
+              className="border-b pb-2 text-gray-700 last:border-none"
+            >
+              {item}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

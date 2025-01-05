@@ -9,7 +9,6 @@ import Contact from "../src/components/Contact";
 import RestaurantDetail from "../src/components/RestaurantDetail";
 import Profile from "../src/components/ProfileClass";
 import Shimmer from "./components/Shimmer"
-// import InstaMart from "./components/InstaMart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const InstaMart = lazy(() => import("./components/InstaMart.js"));
@@ -19,7 +18,6 @@ const AppLayout = () => {
   return (
     <>
       <Header />
-      {/* This will render based on the path, Outlet acts as a placeholder for child routes */}
       <Outlet />
       <Footer />
     </>
