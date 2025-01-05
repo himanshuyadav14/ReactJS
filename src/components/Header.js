@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Title = () => (
   <a href="/" className="flex items-center">
-    <img src={LOGO_URL} alt="Logo" className="h-10 w-10 object-cover" />
+    <img src={LOGO_URL} alt="Logo" className="h-14 w-20 object-cover" />
     <span className="ml-3 font-bold text-gray-800">FoodCart</span>
   </a>
 );
