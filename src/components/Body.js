@@ -48,7 +48,7 @@ const Body = () => {
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+    <div className="container mx-auto px-6 sm:px-8 lg:px-12 my-10">
       {/* Search Bar */}
       <div className="flex justify-center items-center gap-4 mt-10 mb-6">
         <input

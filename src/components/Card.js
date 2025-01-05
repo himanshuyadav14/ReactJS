@@ -12,10 +12,15 @@ export const RestaurantCard = ({ restaurant }) => {
 
       <div className="p-4">
         {/* Restaurant Name */}
-        <h2 className="text-2xl font-semibold text-gray-800 mb-2">{restaurant.info.name}</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+          {restaurant.info.name.slice(0, 20)}
+          {restaurant.info.name.length > 20 && "..."}
+        </h2>
 
         {/* Cuisines */}
-        <h3 className="text-lg text-gray-600 mb-2">{restaurant.info.cuisines.join(", ")}</h3>
+        <h3 className="text-lg text-gray-600 mb-2">
+          {restaurant.info.cuisines.slice(0, 3).join(", ")}
+        </h3>
 
         {/* Average Rating */}
         <h4 className="text-xl text-yellow-500 font-semibold mb-2">
@@ -25,7 +30,9 @@ export const RestaurantCard = ({ restaurant }) => {
         {/* Additional Details (Cost for Two, Location) */}
         <div className="text-gray-500 text-sm flex justify-between items-center">
           <span>{restaurant.info.costForTwo} for two</span>
-          <span>{restaurant.info.area}, {restaurant.info.city}</span>
+          <span>
+            {restaurant.info.area}, {restaurant.info.city}
+          </span>
         </div>
       </div>
     </div>
