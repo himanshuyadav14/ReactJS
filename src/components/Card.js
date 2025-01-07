@@ -1,6 +1,6 @@
 import { CDN_URL } from "/src/config";
 
-export const RestaurantCard = ({ restaurant }) => {
+export const RestaurantCard = ({ restaurant, user}) => {
   return (
     <div className="card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ease-in-out">
       {/* Restaurant Image */}
@@ -34,6 +34,8 @@ export const RestaurantCard = ({ restaurant }) => {
             {restaurant.info.area}, {restaurant.info.city}
           </span>
         </div>
+
+        <h4>{user.name}</h4>
       </div>
     </div>
   );

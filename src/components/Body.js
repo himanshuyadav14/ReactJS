@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { filteredData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 
-const Body = () => {
+const Body = ({user}) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -75,7 +75,7 @@ const Body = () => {
               key={index}
               className="block transform transition hover:scale-105"
             >
-              <RestaurantCard restaurant={restaurant} />
+              <RestaurantCard restaurant={restaurant} user={user} />
             </Link>
           ))
         ) : (

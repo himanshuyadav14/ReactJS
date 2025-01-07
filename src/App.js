@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "/src/components/Header";
 import Body from "/src/components/Body";
@@ -8,13 +8,18 @@ import Error from "../src/components/Error";
 import Contact from "../src/components/Contact";
 import RestaurantDetail from "../src/components/RestaurantDetail";
 import Profile from "../src/components/ProfileClass";
-import Shimmer from "./components/Shimmer"
+import Shimmer from "./components/Shimmer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const InstaMart = lazy(() => import("./components/InstaMart.js"));
 
 // Layout Component
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Himanshu Yadav",
+    email: "Himyadav.yh@gmail.com",
+  });
+
   return (
     <>
       <Header />
@@ -33,7 +38,14 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />, // Body for the root path
+        element: (
+          <Body
+            user={{
+              name: "Himanshu Yadav",
+              email: "Himyadav.yh@gmail.com",
+            }}
+          />
+        ), // Body for the root path
       },
       {
         path: "/about",
@@ -56,7 +68,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer/>}>
+          <Suspense fallback={<Shimmer />}>
             <InstaMart />
           </Suspense>
         ),
