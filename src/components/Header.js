@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { LOGO_URL } from "/src/config";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext"
 
 const Title = () => (
   <a href="/" className="flex items-center">
@@ -13,6 +14,10 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the side menu
 
+  const {user} = useContext(UserContext);
+
+  console.log(user);
+
   return (
     <header className="bg-gray-100 shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
@@ -23,25 +28,39 @@ const Header = () => {
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 text-gray-700 font-medium">
             <li>
-              <Link to="/" className="hover:text-blue-600 transition">Home</Link>
+              <Link to="/" className="hover:text-blue-600 transition">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-blue-600 transition">About</Link>
+              <Link to="/about" className="hover:text-blue-600 transition">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="/Contact" className="hover:text-blue-600 transition">Contact</Link>
+              <Link to="/Contact" className="hover:text-blue-600 transition">
+                Contact
+              </Link>
             </li>
             <li>
-              <Link to="/instamart" className="font-bold text-blue-600 hover:underline">GroceryHub</Link>
+              <Link
+                to="/instamart"
+                className="font-bold text-blue-600 hover:underline"
+              >
+                GroceryHub
+              </Link>
             </li>
             <li>
-              <Link to="/cart" className="hover:text-blue-600 transition">Cart</Link>
+              <Link to="/cart" className="hover:text-blue-600 transition">
+                Cart
+              </Link>
             </li>
           </ul>
         </nav>
 
         {/* Authentication Button */}
         <div className="hidden md:block">
+          <span className="font-bold mx-4">{user.name}</span>
           {isLoggedIn ? (
             <button
               onClick={() => setIsLoggedIn(false)}
@@ -61,7 +80,10 @@ const Header = () => {
 
         {/* Mobile Hamburger Icon */}
         <div className="md:hidden flex items-center">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-gray-700"
+          >
             <svg
               className="w-6 h-6"
               fill="none"

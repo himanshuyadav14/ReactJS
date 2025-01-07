@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { RestaurantCard } from "../components/Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filteredData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext"
 
-const Body = ({user}) => {
+const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();

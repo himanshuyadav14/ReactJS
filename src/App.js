@@ -9,6 +9,7 @@ import Contact from "../src/components/Contact";
 import RestaurantDetail from "../src/components/RestaurantDetail";
 import Profile from "../src/components/ProfileClass";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const InstaMart = lazy(() => import("./components/InstaMart.js"));
@@ -21,11 +22,11 @@ const AppLayout = () => {
   });
 
   return (
-    <>
+    <UserContext.Provider value={{ user: user }}>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </UserContext.Provider>
   );
 };
 
