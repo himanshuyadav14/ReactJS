@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { LOGO_URL } from "/src/config";
 import { Link } from "react-router-dom";
-import UserContext from "../utils/UserContext"
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Title = () => (
   <a href="/" className="flex items-center">
@@ -14,7 +15,12 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the side menu
 
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart);
+  const cartLength = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   console.log(user);
 
@@ -52,7 +58,7 @@ const Header = () => {
             </li>
             <li>
               <Link to="/cart" className="hover:text-blue-600 transition">
-                Cart
+                Cart - {cartLength}
               </Link>
             </li>
           </ul>
@@ -171,7 +177,7 @@ const Header = () => {
                   className="block text-gray-700 font-medium hover:text-blue-600 transition"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Cart
+                  Cart - {cartLength}
                 </Link>
               </li>
               <li>

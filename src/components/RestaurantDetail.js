@@ -3,10 +3,29 @@ import { useParams } from "react-router-dom";
 import { CDN_URL } from "../config";
 import Shimmer from "../components/Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const RestaurantDetail = () => {
   const { id } = useParams();
   const restaurant = useRestaurant(id);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
+
+  const getItemQuantity = (itemId) => {
+    const item = cart.find((cartItem) => cartItem.id === itemId);
+    return item ? item.quantity : 0;
+  };
+
+  const handleAddItem = (item) => {
+    console.log(item);
+    dispatch(addItem(item));
+  };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item));
+  };
 
   return !restaurant ? (
     <Shimmer />
@@ -36,7 +55,8 @@ const RestaurantDetail = () => {
               <strong>Rating:</strong> ⭐ {restaurant?.info?.avgRating || "N/A"}
             </p>
             <p className="text-gray-600">
-              <strong>Cost for Two:</strong> ₹{restaurant?.info?.costForTwo || "N/A"}
+              <strong>Cost for Two:</strong> ₹
+              {restaurant?.info?.costForTwo || "N/A"}
             </p>
           </div>
         </div>
@@ -46,14 +66,43 @@ const RestaurantDetail = () => {
       <div className="bg-gray-50 shadow-md rounded-lg p-6">
         <h1 className="text-xl font-semibold text-gray-800 mb-4">Menu</h1>
         <ul className="space-y-2">
-          {restaurant?.menu?.map((item, index) => (
-            <li
-              key={index}
-              className="border-b pb-2 text-gray-700 last:border-none"
-            >
-              {item}
-            </li>
-          ))}
+          {restaurant?.menu?.map((item) => {
+            const quantity = getItemQuantity(item.id);
+            return (
+              <li
+                key={item.id}
+                className="flex justify-between items-center border-b pb-2 text-gray-700 last:border-none"
+              >
+                <span>{item.name}</span>
+                <div className="flex items-center">
+                  {quantity > 0 ? (
+                    <>
+                      <button
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                        onClick={() => handleRemoveItem(item)}
+                      >
+                        -
+                      </button>
+                      <span className="mx-2">{quantity}</span>
+                      <button
+                        className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                        onClick={() => handleAddItem(item)}
+                      >
+                        +
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                      onClick={() => handleAddItem(item)}
+                    >
+                      Add Item
+                    </button>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
