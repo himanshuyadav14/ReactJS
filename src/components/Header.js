@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { LOGO_URL } from "/src/config";
+import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Title = () => (
   <a href="/" className="flex items-center">
-    <img src={LOGO_URL} alt="Logo" className="h-14 w-20 object-cover" />
+    <img data-testid="logo" src={Logo} alt="logo" className="h-14 w-20 object-cover" />
     <span className="ml-3 font-bold text-gray-800">FoodCart</span>
   </a>
 );
