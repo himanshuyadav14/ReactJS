@@ -1,4 +1,4 @@
-import { CDN_URL } from "/src/config";
+import { CDN_URL } from "../config";
 
 export const RestaurantCard = ({ restaurant, user}) => {
   return (

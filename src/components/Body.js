@@ -4,14 +4,14 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filteredData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
-import UserContext from "../utils/UserContext"
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getRestaurants();
@@ -56,6 +56,7 @@ const Body = () => {
       <div className="flex justify-center items-center gap-4 mt-10 mb-6">
         <input
           type="text"
+          data-testid="search-input"
           className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Search for restaurants..."
           value={searchText}
@@ -63,6 +64,7 @@ const Body = () => {
         />
         <button
           className="px-6 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition"
+          data-testid="search-btn"
           onClick={handleSearch}
         >
           Search
@@ -70,7 +72,7 @@ const Body = () => {
       </div>
 
       {/* Restaurant List */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" data-testid="res-list">
         {filteredRestaurants.length > 0 ? (
           filteredRestaurants?.map((restaurant, index) => (
             <Link

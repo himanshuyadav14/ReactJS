@@ -65,7 +65,7 @@ const RestaurantDetail = () => {
       {/* Menu */}
       <div className="bg-gray-50 shadow-md rounded-lg p-6">
         <h1 className="text-xl font-semibold text-gray-800 mb-4">Menu</h1>
-        <ul className="space-y-2">
+        <ul data-testid="menu" className="space-y-2">
           {restaurant?.menu?.map((item) => {
             const quantity = getItemQuantity(item.id);
             return (
@@ -85,6 +85,7 @@ const RestaurantDetail = () => {
                       </button>
                       <span className="mx-2">{quantity}</span>
                       <button
+                        data-testid="addBtn"
                         className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
                         onClick={() => handleAddItem(item)}
                       >
@@ -93,6 +94,7 @@ const RestaurantDetail = () => {
                     </>
                   ) : (
                     <button
+                      data-testid="addBtn"
                       className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition"
                       onClick={() => handleAddItem(item)}
                     >

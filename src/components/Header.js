@@ -3,6 +3,7 @@ import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import useOnline from "../utils/useOnline"
 
 const Title = () => (
   <a href="/" className="flex items-center">
@@ -14,6 +15,9 @@ const Title = () => (
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the side menu
+
+  const isOnline = useOnline();
+  console.log("isOnline", isOnline);
 
   const { user } = useContext(UserContext);
   const cartItems = useSelector((store) => store.cart);
@@ -57,7 +61,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/cart" className="hover:text-blue-600 transition">
+              <Link to="/cart" data-testid="cart" className="hover:text-blue-600 transition">
                 Cart - {cartLength}
               </Link>
             </li>
@@ -66,6 +70,7 @@ const Header = () => {
 
         {/* Authentication Button */}
         <div className="hidden md:block">
+          <span data-testid="online-status">{isOnline ? "🟢" : "🔴"}</span>
           <span className="font-bold mx-4">{user.name}</span>
           {isLoggedIn ? (
             <button
